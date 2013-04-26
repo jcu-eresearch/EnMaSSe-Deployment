@@ -31,39 +31,10 @@ windows
 
 Note: It can be a pain getting python and virtualenv to work correctly from the command line, it may be easier to follow the deploy steps above.
 
-
-Windows Problems
-================
-
-Setup git so that it is runnable from the command line:
--------------------------------------------------------
-1. Install msysgit 
-2. Add to path variable as <installdir>\cmd
-3. Install tortiosegit 
-4. Ensure git works from the command line, cross your fingers..., if all else fails use a git-bash command prompt.
-
-Make sure the virtual env is configured with a valid c compiler:
-----------------------------------------------------------------
-
-1. Install mingw
-2. Add <installdir>/bin and <installdir>/mingw32/bin to path
-3. Add [build] compiler=mingw32 to venv/lib/distutils/distutils.cfg
-4. Delete all -mno-cygwin within c:/python27/libs/distutils/cygwincompiler.py
-		
-If there are errors installing lxml:
-------------------------------------
-
-1. <venv>\Scripts\easy_install lxml==2.3 then copy the egg to the <repository loc>\eggs
-2. The easy_install download may fail, if it does:
-    a. Use wget on a linux machine to download the found url
-    b. Use scp to copy from linux machine to windows machine
-    c. <venv>\Scripts\easy_install <folder egg is copied to>\lxml-2.3-py2.7-win32.egg
-    d. copy the lxml... folder from <venv>\Lib\site-packages to <installdir>\eggs folder
-
 Linux Problems
 ==============
 
-If you have unrecognised archive errors installing twistd:
+If you have unrecognised archive errors installing twistd
 ----------------------------------------------------------
 
 1. yum install bzip2-devel (or equiv - libbz2-dev)
@@ -85,6 +56,33 @@ If there are errors installing lxml:
 1. <venv>\Scripts\pip install python-libxml2 libxslt 
 2. yum install libxml2-dev (or libxslt-devel)
 
+Windows Problems
+================
+
+Setup git so that it is runnable from the command line:
+-------------------------------------------------------
+1. Install msysgit 
+2. Add to path variable as <installdir>\cmd
+3. Install tortiosegit 
+4. Ensure git works from the command line, cross your fingers..., if all else fails use a git-bash command prompt.
+
+Make sure the virtual env is configured with a valid c compiler:
+----------------------------------------------------------------
+
+1. Install mingw
+2. Add <installdir>/bin and <installdir>/mingw32/bin to path
+3. Add [build] compiler=mingw32 to venv/lib/distutils/distutils.cfg
+4. Delete all -mno-cygwin within c:/python27/libs/distutils/cygwincompiler.py
+		
+If there are errors installing lxml
+------------------------------------
+
+1. <venv>\Scripts\easy_install lxml==2.3 then copy the egg to the <repository loc>\eggs
+2. The easy_install download may fail, if it does:
+    a. Use wget on a linux machine to download the found url
+    b. Use scp to copy from linux machine to windows machine
+    c. <venv>\Scripts\easy_install <folder egg is copied to>\lxml-2.3-py2.7-win32.egg
+    d. copy the lxml... folder from <venv>\Lib\site-packages to <installdir>\eggs folder
 	
 Other problems
 ==============
