@@ -37,28 +37,28 @@ Windows Problems
 
 Setup git so that it is runnable from the command line:
 -------------------------------------------------------
-  - Install msysgit 
-	- Add to path variable as <installdir>\cmd
-	- Install tortiosegit 
-	- Ensure git works from the command line, cross your fingers..., if all else fails use a git-bash command prompt.
+1. Install msysgit 
+2. Add to path variable as <installdir>\cmd
+3. Install tortiosegit 
+4. Ensure git works from the command line, cross your fingers..., if all else fails use a git-bash command prompt.
 
 Make sure the virtual env is configured with a valid c compiler:
 ----------------------------------------------------------------
 
-	- Install mingw
-	- Add <installdir>/bin and <installdir>/mingw32/bin to path
-	- Add [build] compiler=mingw32 to venv/lib/distutils/distutils.cfg
-	- Delete all -mno-cygwin within c:/python27/libs/distutils/cygwincompiler.py
+1. Install mingw
+2. Add <installdir>/bin and <installdir>/mingw32/bin to path
+3. Add [build] compiler=mingw32 to venv/lib/distutils/distutils.cfg
+4. Delete all -mno-cygwin within c:/python27/libs/distutils/cygwincompiler.py
 		
 If there are errors installing lxml:
 ------------------------------------
 
-	- <venv>\Scripts\easy_install lxml==2.3 then copy the egg to the <repository loc>\eggs
-	- The easy_install download may fail, if it does:
-	    - Use wget on a linux machine to download the found url
-	    - Use scp to copy from linux machine to windows machine
-	    - <venv>\Scripts\easy_install <folder egg is copied to>\lxml-2.3-py2.7-win32.egg
-	    - copy the lxml... folder from <venv>\Lib\site-packages to <installdir>\eggs folder
+1. <venv>\Scripts\easy_install lxml==2.3 then copy the egg to the <repository loc>\eggs
+2. The easy_install download may fail, if it does:
+    a. Use wget on a linux machine to download the found url
+    b. Use scp to copy from linux machine to windows machine
+    c. <venv>\Scripts\easy_install <folder egg is copied to>\lxml-2.3-py2.7-win32.egg
+    d. copy the lxml... folder from <venv>\Lib\site-packages to <installdir>\eggs folder
 
 Linux Problems
 ==============
@@ -66,24 +66,24 @@ Linux Problems
 If you have unrecognised archive errors installing twistd:
 ----------------------------------------------------------
 
-	- yum install bzip2-devel (or equiv - libbz2-dev)
-	- cd to python2.7 files (probably /usr/lib/python2.7)
-	- make clean
-	- ./configure
-	- make
-	- make install/make altinstall (only use install if python2.7 is the system python)
+1. yum install bzip2-devel (or equiv - libbz2-dev)
+2. cd to python2.7 files (probably /usr/lib/python2.7)
+3. make clean
+4. ./configure
+5. make
+6. make install/make altinstall (only use install if python2.7 is the system python)
 
 If lxml has remote connection closed problems:
 ----------------------------------------------
-	- download the source
-	- use the virtual env to run setup.py bdist
-	- copy the egg to <repository location>/eggs/
+1. download the source
+2. use the virtual env to run setup.py bdist
+3. copy the egg to <repository location>/eggs/
 	
 If there are errors installing lxml:
 ------------------------------------
 
-	- <venv>\Scripts\pip install python-libxml2 libxslt 
-	- yum install libxml2-dev (or libxslt-devel)
+1. <venv>\Scripts\pip install python-libxml2 libxslt 
+2. yum install libxml2-dev (or libxslt-devel)
 
 	
 Other problems
