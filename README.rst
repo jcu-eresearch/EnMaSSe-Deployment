@@ -19,14 +19,14 @@ Deployment using scripts
 linux
 -----
 
-1. Complete steps 1-4 as above.
+1. Complete steps 1-5 as above.
 2. cd <deploy dir>
 3. sh deploy.sh
 
 windows
 -------
 
-1. Complete steps 1-4 as above.
+1. Complete steps 1-5 as above.
 2. cd <deploy dir>
 3. deploy.bat
 
