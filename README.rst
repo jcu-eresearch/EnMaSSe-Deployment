@@ -1,14 +1,39 @@
 Deployment Steps
 ================
 
-1. Checkout this git repository
-2. Install python 2.7
-3. Install easy_install
-4. easy_install virtualenv
-5. Create venv from python 2.7 (<python27>/Scripts/virtualenv --no-site-packages <location>).
-6. <venv>/bin/pip install zc.buildout distribute
-7. cd to the checked out repository location
-8. <venv>/bin/buildout
+#. Install python 2.7 with the required packages:
+	
+	::
+
+		yum -y groupinstall "Development tools"
+		yum -y install python-virtualenv git openssl openssl-devel libxml2 libxml2-devel libxslt libxslt-devel bzip2-devel libzip-devel libzip sqlite-devel python-devel
+		
+		cd ~
+		mkdir .python
+		cd .python/
+		virtualenv --no-site-packages build_python
+		cd ~
+		mkdir bin
+		echo "export PATH=\$PATH:~/bin" > /etc/profile.d/home_bin.sh
+		source /etc/profile
+		ln -s ~/.python/build_python/bin/pip ~/bin/python_pip
+		python_pip install setuptools --upgrade zc.buildout==1.4.4 distribute
+		python_pip install 
+		
+		ln -s ~/.python/build_python/bin/buildout ~/bin/python_buildout
+			
+		mkdir /usr/share/python-buildout 
+		cd /usr/share/python-buildout 
+		git clone https://github.com/collective/buildout.python.git
+		cd buildout.python/
+		sed -i "s@prefix = /opt/local@prefix = /usr/share/python-buildout@g" buildout.cfg
+		python_buildout
+		./bin/install-links
+
+#. Checkout this git repository
+#. Create venv from python 2.7 (<python27>/bin/virtualenv --no-site-packages <location>).
+#. cd to the checked out repository location
+#. <venv>/bin/buildout
 
 Note:  We have had trouble with installation of lxml so binaries have been included in the lxml-binaries directory.
 
@@ -18,8 +43,7 @@ Deployment using scripts
 linux
 -----
 
-1. yum install sqlite-devel python-devel bzip2-devel distribute (or equivalent for our system)
-2. Complete steps 1-4 as above.
+2. Complete steps 1-5 as above.
 3. cd <deploy dir>
 4. sh deploy.sh
 
@@ -27,8 +51,8 @@ windows
 -------
 
 1. Get git, python and virtualenv-2.7 working from the command line (see windows problems below).
-2. Get a valide c++ compiler working from the command line (see windows problems below).
-3. Complete steps 1-4 as above.
+2. Get a valid c++ compiler working from the command line (see windows problems below).
+3. Complete steps 1-5 as above.
 4. cd <deploy dir>
 5. deploy.bat
 
@@ -49,6 +73,8 @@ If you have unrecognised archive errors installing twistd
 
 If lxml has remote connection closed problems:
 ----------------------------------------------
+
+Either copy the included binaries from lxml-binaries/linux into ./eggs or:
 1. download the source
 2. use the virtual env to run setup.py bdist
 3. copy the egg to <repository location>/eggs/
@@ -85,6 +111,7 @@ Make sure the virtual env is configured with a valid c compiler:
 If there are errors installing lxml
 ------------------------------------
 
+Either copy all files from lxml-binaries/windows into venv\Lib\site-packages or:
 1. <venv>\Scripts\easy_install lxml==2.3 then copy the egg to the <repository loc>\eggs
 2. The easy_install download may fail, if it does:
     a. Use wget on a linux machine to download the found url
