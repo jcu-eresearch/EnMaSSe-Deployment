@@ -5,11 +5,10 @@ Deployment Steps
 2. Install python 2.7
 3. Install easy_install
 4. easy_install virtualenv
-5. yum install sqlite-devel python-devel (or equivalent for our system)
-6. Create venv from python 2.7 (<python27>/Scripts/virtualenv --no-site-packages <location>).
-7. <venv>/bin/pip install zc.buildout distribute
-8. cd to the checked out repository location
-9. <venv>/bin/buildout
+5. Create venv from python 2.7 (<python27>/Scripts/virtualenv --no-site-packages <location>).
+6. <venv>/bin/pip install zc.buildout distribute
+7. cd to the checked out repository location
+8. <venv>/bin/buildout
 
 Note:  We have had trouble with installation of lxml so binaries have been included in the lxml-binaries directory.
 
@@ -19,14 +18,15 @@ Deployment using scripts
 linux
 -----
 
-1. Complete steps 1-5 as above.
-2. cd <deploy dir>
-3. sh deploy.sh
+1. Complete steps 1-4 as above.
+2. yum install sqlite-devel python-devel (or equivalent for our system)
+3. cd <deploy dir>
+4. sh deploy.sh
 
 windows
 -------
 
-1. Complete steps 1-5 as above.
+1. Complete steps 1-4 as above.
 2. cd <deploy dir>
 3. deploy.bat
 
