@@ -18,17 +18,19 @@ Deployment using scripts
 linux
 -----
 
-1. Complete steps 1-4 as above.
-2. yum install sqlite-devel python-devel (or equivalent for our system)
+1. yum install sqlite-devel python-devel bzip2-devel distribute (or equivalent for our system)
+2. Complete steps 1-4 as above.
 3. cd <deploy dir>
 4. sh deploy.sh
 
 windows
 -------
 
-1. Complete steps 1-4 as above.
-2. cd <deploy dir>
-3. deploy.bat
+1. Get git, python and virtualenv-2.7 working from the command line (see windows problems below).
+2. Get a valide c++ compiler working from the command line (see windows problems below).
+3. Complete steps 1-4 as above.
+4. cd <deploy dir>
+5. deploy.bat
 
 Note: It can be a pain getting python and virtualenv to work correctly from the command line, it may be easier to follow the deploy steps above.
 
@@ -57,6 +59,11 @@ If there are errors installing lxml:
 1. <venv>\Scripts\pip install python-libxml2 libxslt 
 2. yum install libxml2-dev (or libxslt-devel)
 
+mysql-python won't install
+--------------------------
+
+If there are errors installing mysql-python, install the mysql client dev libraries (libmysqlclient-dev)
+
 Windows Problems
 ================
 
@@ -84,9 +91,9 @@ If there are errors installing lxml
     b. Use scp to copy from linux machine to windows machine
     c. <venv>\Scripts\easy_install <folder egg is copied to>\lxml-2.3-py2.7-win32.egg
     d. copy the lxml... folder from <venv>\Lib\site-packages to <installdir>\eggs folder
-	
-Other problems
-==============
+
+mysql-python won't install
+--------------------------
 
 If there are errors installing mysql-python, install the mysql client dev libraries (libmysqlclient-dev)
 
