@@ -1,12 +1,12 @@
 Deployment Steps
 ================
 
-#. Install python 2.7 with the required packages:
+#. Install python 2.7 with the required packages as well as other required development libraries:
 	
 	::
 
 		yum -y groupinstall "Development tools"
-		yum -y install python-virtualenv git openssl openssl-devel libxml2 libxml2-devel libxslt libxslt-devel bzip2-devel libzip-devel libzip sqlite-devel python-devel
+		yum -y install python-virtualenv git openssl openssl-devel libxml2 libxml2-devel libxslt libxslt-devel bzip2-devel libzip-devel libzip sqlite-devel python-devel mysql-devel mysql-client
 		
 		cd ~
 		mkdir .python
@@ -70,11 +70,6 @@ Either copy the included binaries from lxml-binaries/linux into ./eggs or:
 	#. yum install libxml2-dev (or libxslt-devel)
 	#. use the virtual env to run setup.py bdist
 	#. copy the egg to <repository location>/eggs/
-	
-mysql-python won't install
---------------------------
-
-If there are errors installing mysql-python, install the mysql client dev libraries (libmysqlclient-devel)
 
 Windows Problems
 ================
@@ -109,7 +104,7 @@ Either copy all files from lxml-binaries/windows into venv/Lib/site-packages or:
 mysql-python won't install
 --------------------------
 
-If there are errors installing mysql-python, install the mysql client dev libraries (libmysqlclient-dev)
+If there are errors installing mysql-python, install the mysql client dev libraries (libmysqlclient-dev) or equivalent.
 
 Running the program after deployment
 ====================================
