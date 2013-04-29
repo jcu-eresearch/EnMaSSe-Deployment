@@ -1,3 +1,5 @@
+EnMaSSe requires a number of source repositories which are each checked out and setup for development using buildout.  Basically the development libraries, python 2.7 and buildout need to be installed, then run the buildout configuration to complete the setup.
+
 Deployment Steps
 ================
 
@@ -17,7 +19,7 @@ Deployment Steps
 		echo "export PATH=\$PATH:~/bin" > /etc/profile.d/home_bin.sh
 		source /etc/profile
 		ln -s ~/.python/build_python/bin/pip ~/bin/python_pip
-		python_pip install setuptools --upgrade zc.buildout==1.4.4 distribute
+		python_pip install setuptools --upgrade zc.buildout==1.4.4
 		
 		ln -s ~/.python/build_python/bin/buildout ~/bin/python_buildout
 			
