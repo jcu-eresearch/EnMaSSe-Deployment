@@ -31,6 +31,7 @@ Deployment Steps
 
 #. Checkout this git repository
 #. Create venv from python 2.7 (<python27>/bin/virtualenv --no-site-packages <location>).
+#. <venv>/bin/pip install zc.buildout distribute
 #. cd to the checked out repository location
 #. <venv>/bin/buildout
 
