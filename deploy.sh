@@ -2,7 +2,7 @@
 clear
 
 virtualenv-2.7 --no-site-packages venv
-venv/bin/easy_install zc.buildout distribute
+venv/bin/easy_install zc.buildout distribute uwsgi
 
 # Setup the lxml egg before calling buildout (lxml has problems)
 mkdir ./eggs
