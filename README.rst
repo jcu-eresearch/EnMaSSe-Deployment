@@ -33,7 +33,7 @@ Deployment Steps
 
 #. Checkout this git repository
 #. Create venv from python 2.7 (<python27>/bin/virtualenv --no-site-packages <location>).
-#. <venv>/bin/pip install zc.buildout distribute
+#. <venv>/bin/pip install zc.buildout distribute uwsgi
 #. cd to the checked out repository location
 #. <venv>/bin/buildout
 #. Set up the provisioning interface and ingester platform as services by adding the following configuration to /etc/supervisord.conf
