@@ -51,7 +51,7 @@ Deployment Steps
 	
 	    [program:enmasse_provisioning]
 	    user=enmasse
-	    command=/opt/enmasse/bin/pserve /opt/enmasse-config/production.ini
+	    command=/opt/enmasse/venv/bin/uwsgi --ini-paste /opt/enmasse-config/production.ini
 	    autostart=true
 	    autorestart=true
 	    logfile=/var/log/supervisor/provisioning.log
@@ -59,8 +59,8 @@ Deployment Steps
 	    logfile_backups=10
 	
 	
-	    chkconfig supervisord on
-	    service supervisord start
+#. chkconfig supervisord on
+#. service supervisord start
 
 
 Note:  We have had trouble with installation of lxml so binaries have been included in the lxml-binaries directory.
