@@ -1,5 +1,7 @@
 EnMaSSe requires a number of source repositories which are each checked out and setup for development using buildout.  Basically the development libraries, python 2.7 and buildout need to be installed, then run the buildout configuration to complete the setup.
 
+The deployment instructions below are targeted at redhat servers but the application was developed on windows and mac and should work fully.  To install on other operating systems follow the equivalent steps to below, windows specific issues/steps have been explained further below.
+
 Deployment Steps
 ================
 
@@ -8,7 +10,7 @@ Deployment Steps
 	::
 
 		yum -y groupinstall "Development tools"
-		yum -y install python-virtualenv git openssl openssl-devel libxml2 libxml2-devel libxslt libxslt-devel bzip2-devel libzip-devel libzip sqlite-devel python-devel mysql-devel mysql-client supervisor
+		yum -y install python-virtualenv git openssl openssl-devel libxml2 libxml2-devel libxslt libxslt-devel bzip2-devel libzip-devel libzip sqlite-devel python-devel mysql-devel mysql-client
 		
 		cd ~
 		mkdir .python
@@ -36,42 +38,32 @@ Deployment Steps
 #. <venv>/bin/pip install zc.buildout distribute uwsgi
 #. cd to the checked out repository location
 #. <venv>/bin/buildout
-#. Set up the provisioning interface and ingester platform as services by adding the following configuration to /etc/supervisord.conf
+#. Set up the provisioning interface and ingester platform as services:
+	#. Copy services/enmasse_provisioning to /etc/init.d 
+	#. chkconfig enmasse_provisioning on
+	#. service enmasse_provisioning start
 
-	::
-
-	    [program:enmass_ingestor_platform]
-	    user=enmasse
-	    command=/opt/enmasse/bin/twistd -n -y /opt/enmasse-config/dc24_ingester_platform_dam_jcu.tac
-	    autostart=true
-	    autorestart=true
-	    logfile=/var/log/supervisor/ingestor_platform.log
-	    logfile_maxbytes=10MB
-	    logfile_backups=10
-	
-	    [program:enmasse_provisioning]
-	    user=enmasse
-	    command=/opt/enmasse/venv/bin/uwsgi --ini-paste /opt/enmasse-config/production.ini
-	    autostart=true
-	    autorestart=true
-	    logfile=/var/log/supervisor/provisioning.log
-	    logfile_maxbytes=10MB
-	    logfile_backups=10
-	
-	
-#. chkconfig supervisord on
-#. service supervisord start
-
+	#. Cop services/enmasse_ingester_platform to /etc/init.d
+	#. chkconfig enmasse_ingester_platform on
+	#. service enmasse_ingester_platform start
+#. Update the configuration files (src/jcu.dc24.provisioning/production.ini and src/jcu.dc24.ingesterplatform/dc24_ingester_platform.tac).
 
 Note:  We have had trouble with installation of lxml so binaries have been included in the lxml-binaries directory.
 
 Linux Deployment using the deploy.sh script
 ========================
 
-#. Complete steps 1-2 as above.
-#. cd to the checked out repository location
-#. sh deploy.sh
-#. Set up the services as described in step 7 above.
+#. Create the user that the services will run as (eg. enmasse)
+#. Create the installation directory and give the user full permissions (eg. /opt/enmasse)
+#. cd <installation dir> 
+#. sudo yum install git
+#. sh deploy.sh /opt/enmasse/services
+#. Update the configuration files (src/jcu.dc24.provisioning/production.ini and src/jcu.dc24.ingesterplatform/dc24_ingester_platform.tac).
+
+Note: Your organisation may want to de-couple the configuration and service files from the deployment, if this is the case:
+	- Store your configuration and service files external to the deployment directory.
+	- Update the service files with the correct configuration files.
+	- Pass the directory that contains your service files into sh deploy.sh rather than /opt/enmasse/services
 
 Linux Problems
 ==============
@@ -81,7 +73,7 @@ If lxml has remote connection closed problems:
 
 Either copy the included binaries from lxml-binaries/linux into ./eggs or:
 	#. download the source
-	#. <venv>\Scripts\pip install python-libxml2 libxslt 
+	#. <venv>/bin/pip install python-libxml2 libxslt 
 	#. yum install libxml2-dev (or libxslt-devel)
 	#. use the virtual env to run setup.py bdist
 	#. copy the egg to <repository location>/eggs/
@@ -128,11 +120,17 @@ If there are errors installing mysql-python, install the mysql client dev librar
 How to run EnMaSSe from the command line
 ============================================
 
-To start the provisioning interface:
+**To start the provisioning interface:**
+
+Production (requires UWSGI web server such as nginx)
 ::
-	<install dir>/bin/pserve <installdir>/src/jcu.dc24.provisioning/development.ini
+	<install dir>/bin/uwsgi <installdir>/src/jcu.dc24.provisioning/production.ini
+
+Development
+::
+	<install dir>/bin/pserve <installdir>/src/jcu.dc24.provisioning/development.ini		
 	
-To start the Ingester Platform
+**To start the Ingester Platform**
 ::
 	<install dir>/bin/twistd-script.py -n -y <install dir>/src/jcu.ed24.ingesterplatform/dc24_ingester_platform_dam_jcu.tac 
 	
