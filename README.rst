@@ -1,14 +1,22 @@
-# EnMaSSe Deployment
+EnMaSSe Deployment
+==================
 
 EnMaSSe (Environmental Monitoring and Sensor Storage) requires a number of source repositories which are each checked out and setup for development using buildout:
 
-* [Documentation](https://github.com/jcu-eresearch/TDH-Rich-Data-Capture-Documentation) - Contains full user, administrator and developer guides.
-* [Deployment](https://github.com/jcu-eresearch/EnMaSSe-Deployment) - Recommended way to install
-* [Ingester Platform](https://github.com/jcu-eresearch/TDH-dc24-ingester-platform) - Handles ingestion of data streaming and storage for the EnMaSSe project.
-* [Ingester API](https://github.com/jcu-eresearch/jcu.dc24.ingesterapi) - API for integrating the EnMaSSe provisioning interface with the ingester platform (this)
-* [SimpleSOS](https://github.com/jcu-eresearch/python-simplesos) - Library used for the SOSScraperDataSource.
+.. _Documentation: https://github.com/jcu-eresearch/TDH-Rich-Data-Capture-Documentation
+.. _`Ingester Platform`: https://github.com/jcu-eresearch/TDH-dc24-ingester-platform
+.. _`Ingester API`: https://github.com/jcu-eresearch/jcu.dc24.ingesterapi
+.. _SimpleSOS: https://github.com/jcu-eresearch/python-simplesos
+.. _`Provisioning Interface`: https://github.com/jcu-eresearch/TDH-rich-data-capture
 
-Basically the development libraries, python 2.7 and buildout need to be installed, then run the buildout configuration to complete the setup.
+* `Ingester Platform`_ - Handles ingestion of data streaming and storage for the EnMaSSe project.
+* `Ingester API`_ - API for integrating the EnMaSSe provisioning interface with the ingester platform (this)
+* SimpleSOS_ - Library used for the SOSScraperDataSource.
+* `Provisioning Interface`_ - User interface/website for EnMaSSe
+
+More information can be found in the Documentation_.
+
+In short the development libraries, python 2.7 and buildout need to be installed, then run the buildout configuration to complete the setup.
 
 The deployment instructions below are targeted at redhat servers but the application was developed on windows and mac and should work fully.  To install on other operating systems follow the equivalent steps to below, windows specific issues/steps have been explained further below.
 
@@ -150,7 +158,10 @@ Development
 Credits
 -------
 
-This project is supported by [the Australian National Data Service (ANDS)](http://www.ands.org.au/) through the National Collaborative Research Infrastructure Strategy Program and the Education Investment Fund (EIF) Super Science Initiative, as well as through the [Queensland Cyber Infrastructure Foundation (QCIF)](http://www.qcif.edu.au/).
+.. _`Australian National Data Service (ANDS)`: http://www.ands.org.au/
+.. _`Queensland Cyber Infrastructure Foundation (QCIF)`: (http://www.qcif.edu.au/
+
+This project is supported by the `Australian National Data Service (ANDS)`_ through the National Collaborative Research Infrastructure Strategy Program and the Education Investment Fund (EIF) Super Science Initiative, as well as through the `Queensland Cyber Infrastructure Foundation (QCIF)`_.
 
 License
 -------
