@@ -10,7 +10,7 @@ EnMaSSe (Environmental Monitoring and Sensor Storage) requires a number of sourc
 .. _`Provisioning Interface`: https://github.com/jcu-eresearch/TDH-rich-data-capture
 
 * `Ingester Platform`_ - Handles ingestion of data streaming and storage for the EnMaSSe project.
-* `Ingester API`_ - API for integrating the EnMaSSe provisioning interface with the ingester platform (this)
+* `Ingester API`_ - API for integrating the EnMaSSe provisioning interface with the ingester platform
 * SimpleSOS_ - Library used for the SOSScraperDataSource.
 * `Provisioning Interface`_ - User interface/website for EnMaSSe
 
