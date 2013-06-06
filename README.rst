@@ -39,7 +39,7 @@ Deployment Steps
 		echo "export PATH=\$PATH:~/bin" > /etc/profile.d/home_bin.sh
 		source /etc/profile
 		ln -s ~/.python/build_python/bin/pip ~/bin/python_pip
-		python_pip install setuptools --upgrade zc.buildout==1.4.4
+		python_pip install setuptools --upgrade zc.buildout==1.4.4 distribute
 		
 		ln -s ~/.python/build_python/bin/buildout ~/bin/python_buildout
 			
