@@ -113,7 +113,7 @@ Make sure the virtual env is configured with a valid c compiler:
 #. Install mingw
 #. Add <installdir>/bin and <installdir>/mingw32/bin to path
 #. Add [build] compiler=mingw32 to venv/lib/distutils/distutils.cfg
-#. Delete all -mno-cygwin within c:/python27/libs/distutils/cygwincompiler.py
+#. Delete all -mno-cygwin within c:/python27/lib/distutils/cygwincompiler.py
 		
 If there are errors installing lxml
 ------------------------------------
