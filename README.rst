@@ -161,6 +161,24 @@ Development
 - Select the correct .tac file 
 - While testing on windows the generated script was actually <install dir>/bin/twistd.py-script.py which worked as expected.
 
+FAQ
+---
+
+**What about the database?**
+
+When installing EnMaSSe provide a blank database and it will initialise the required tables and default data on the first run.
+
+**What local users is a fresh install setup with?**
+
+The default users include:
+- Username: user, password: user, permissions: none.
+- Username: admin, password: admin, permissions: Administrator role.
+
+**How do I add new local users?**
+
+Currently local users need to be added to the database manually.
+
+
 Credits
 -------
 
